@@ -1,0 +1,5 @@
+*~
+/cable-stiffness.aux
+/*.log
+*.pdf
+/auto/cable-stiffness.el
