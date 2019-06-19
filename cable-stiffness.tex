@@ -60,7 +60,7 @@
 \normalfont \normalsize
 \textsc{University of Windsor, Department of civil and environmental engineering} \\ [25pt] % Your university, school and/or department name(s)
 \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
-\huge Play with Tube \\ % The assignment title
+\huge Spring Calculation \\ % The assignment title
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
@@ -94,6 +94,11 @@ effects and pretension of the cable are ignored. This rigid bar is
 constrained such that only the vertically movement is allowed. In
 other word, no vibrations will occur in the out-of-plane. This is a
 typical two degrees-of-freedom system.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{fig/ana-mode.png}
+\end{figure}
 
 The system is a localized stiffness with distributed mass system.
 Since the springs are defined at the degree-of-freedom, so the
@@ -313,7 +318,44 @@ assumptions.
 \section{Design VIV spring}
 \label{sec:design-viv-spring}
 
-The natural frequency 
+The natural frequency is calculated as:
+
+\begin{align}
+f = \sqrt{\frac{2k}{m}} / 2 \pi.
+\end{align}
+
+Therefore, stiffness is a function of natural frequency:
+\begin{align}
+  k &= 2 \pi^2 m f^2, or \\
+    &=  2 * 3.1416 * 3.1416 * 2.67 f^2 \\
+    &=  52.7 f^2
+\end{align}
+
+Given the Strouhal number $(St = f D/U)$ as a constant number 0.21 and
+wind speed $(10 m/s)$ in the wind tunnel, the VIV frequency is
+calculated as:
+\begin{align}
+  f &= 0.21 U /D \\
+    &= 0.21 * 10 / 0.0889 \\
+    &= 23.622 (Hz).
+\end{align}
+
+Based on these assumptions, we can calculate the stiffness of the
+spring:
+\begin{align}
+  k    &=  52.7 f^2 \\
+       &=  52.7 * 23.622^2 \\
+       &=  29406 N/m
+\end{align}
+
+  % Free-stream fluid velocity:	   10 m/s
+   
+  % Characteristic distanceD:	   0.0889 m
+   
+  % Fluid density,	   1.25 kg/m3
+   
+  % Fluid viscosity (dynamic):	   1.8E-005 Pa-s
+   
 \end{document}
 
 %%% Local Variables:
