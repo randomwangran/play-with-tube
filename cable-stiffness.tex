@@ -87,15 +87,15 @@ keep in mind that the dynamic response of the system also affected by
 how many degrees of freedom. This project is just a basic calculation
 to determine the stiffness of springs.
 
-First, the in-plane motion can be model as a rigid bar of total mass m
-sitting on two springs with stiffness k shown in the Figure 1. Damping
+First, the in-plane motion can be model as a rigid bar of total mass (m)
+sitting on two springs with stiffness (k) shown in the Figure 1. Damping
 effects and pretension of the cable are ignored. This rigid bar is
 constrained such that only the vertically movement is allowed. In
 other word, no vibrations will occur in the out-of-plane. This is a
-typical two degrees of freedom system.
+typical two degrees-of-freedom system.
 
 The system is a localized stiffness with distributed mass system.
-Since the springs are defined at the degree of freedom, so the
+Since the springs are defined at the degree-of-freedom, so the
 stiffness matrix of the system can be written as:
 
 \begin{align}
@@ -103,11 +103,11 @@ stiffness matrix of the system can be written as:
 \end{align}
 
 To obtain the mass matrix, one should impart a unit acceleration at
-degree of freedom 1 with zero acceleration at degree of freedom 2. By
-considering the inertia forces, one can calculate $m_{11}$ and $m_{21}$
+degree of freedom 1 with zero acceleration at degree-of-freedom 2. By
+considering the inertia force, one can calculate $m_{11}$ and $m_{21}$
 equal to $\frac{m}{3}$ and $\frac{m}{6}$ , respectively. Similarly, by
-applying a unit acceleration at degree of freedom 1, $m_{12}$ and $m_{22}$
-can be calculaed as $\frac{m}{6}$ and $\frac{m}{3}$ , respectively. Thus,
+applying a unit acceleration at degree-of-freedom 1, $m_{12}$ and $m_{22}$
+can be calculated as $\frac{m}{6}$ and $\frac{m}{3}$ , respectively. Thus,
 the mass matrix can be set up as:
 
 \begin{align}
@@ -115,7 +115,7 @@ the mass matrix can be set up as:
 \end{align}
 
 Once the stiffness matrix and mass matrix are determined, the equation
-of motion of this two degree of freedom system can be written as:
+of motion can be written as:
 
 \begin{align}
 \frac{m}{6}\
@@ -124,7 +124,7 @@ of motion of this two degree of freedom system can be written as:
 \end{align}
 
 The motion of the sytem for single degree-of-freedom is known as
-simple harmonic motion. By solving above linear sytem, one can
+simple harmonic motion. By solving the above linear sytem, one can
 determine the circular frequencies of the system:
 
 \begin{align}
@@ -132,17 +132,19 @@ determine the circular frequencies of the system:
   \begin{bmatrix} \sqrt{\frac{2k}{m}} \\ \sqrt{\frac{6k}{m}} \\ \end{bmatrix}.
 \end{align}
 
-Model parameters can be found in Table 1.
+Model parameters can be found in Table 1.1.
 
 \begin{table}
   \centering
   \begin{tabular}{ll}
+    \hline    
     Length	&   1.4 $m$ \\
     Out diameter of the cable &	0.0889 $m$ \\
-    Inner diameter of the cable &	0.0762 m \\
+    Inner diameter of the cable &	0.0762 $m$ \\
     Young's Modulus	& 3.2E9 $Pa$\\
     Density of the cable & 	 1163 $Kg/m^{3}$\\
     Stiffness of the spring	 &  3 $N/m$ \\
+    \hline
   \end{tabular}
   \caption{Parameters of the cable model.}
   \label{tab:cable-parameter}
@@ -163,8 +165,8 @@ ends of the cable moving out-of-phase.
 \section{Finite Element Model}
 \label{sec:finite-element-model}
 
-\subsection{2.2.1	Modal Analysis}
-\label{sec:2.2.1-modal-analysis}
+\subsection{Modal Analysis}
+\label{sec:modal-analysis}
 
 Modal analysis is the process of determining the inherent dynamic
 characteristics of a system in forms of natural frequencies, damping
@@ -193,7 +195,7 @@ In this project, a commerical software Abaqus 6.14 is utilized to
 analyse modal response of the cable. The purpose of the simulation is
 to compare hand calculations with numerical simulations. Once the
 validation is done, one can further investigate problems that are hard
-to calculate manually.
+to calculate using analy.
 
 Wilkinson and Wilkinson (1965) detailed the problems in his book. The
 reason why eigenvale problem is popular with finite element analysis
@@ -202,10 +204,10 @@ matrices of majority problems are symmetry. A typtical mathematical
 description of the problem is:
 
 \begin{align}
-\left(\mu^2\left[M\right]+\mu\left[C\right]+\left[K\right]\right)\left\{\psi\right\}=0.
+\left(\mu^2\left[M\right]+\mu\left[C\right]+\left[K\right]\right)\left\{\psi\right\}=0,
 \end{align}
 
-Where, $[M]$ is the mass matrix, which is symmetry and postive define;
+where $[M]$ is the mass matrix, which is symmetry and postive define;
 $[C]$ is the damping matrix; $[K]$ is the stiffness matrix, which may
 include large-displacment effects, and, therefore, may not always be
 positive definite or sysmmetry; $\mu$ is the eigenvalue;
@@ -219,7 +221,7 @@ imaginery eigenvalue, $\mu=i\omega$, where $\omega$ is the circular
 frequey of the system, so the system can be rewriten as:
 
 \begin{align}
-\left(-\omega^2\left[M\right]+\left[k\right]\right)\left\{\psi\right\}=0
+\left(-\omega^2\left[M\right]+\left[k\right]\right)\left\{\psi\right\}=0.
 \end{align}
 
 Abaqus provides eignevalue extration procedures for above system. For
@@ -228,6 +230,45 @@ subspace iteration methods.The solver using in this project is called
 Lanczos eigensolver. This kind of algorithem is powerful in extration
 of the extreme eigenvalues and the corresponding eigenvectors.
 
+\subsection{FEM Modeling}
+\label{sec:fem-modeling}
+
+In the part, materials and sections models, the geometry and physical
+properties are defined. In the step setting, non-linear effect is
+ignored; Lanczos eigensolver is choosen. C3D8R element is used to
+discretize the whole system. Since the analytical solution is provided
+in the previous discussion, there is no need to do mesh independent
+study. Boundary condtions are defined in such a way that it is very
+simlary to hand calculation. The cable is connected with two springs.
+The cable is simulated as a rigid bar. The only difference is that the
+cable is allowed to have axial displacement, in order to obtain the
+second modal shape from hand calculations.
+
+Boundary condtions are defined in such a way that it is very simlary
+to hand calculation. The cable is connected with two springs. The
+cable is simulated as a rigid bar. The only difference is that the
+cable is allowed to have axial displacement, in order to obtain the
+second modal shape from hand calculations.
+
+\subsection{FEA Results}
+\label{sec:fea-results}
+
+The simulaiton result is present in the Table 2.1 It shows that the two
+calculations agree with each other very well, thus the calculation of
+the natural frequency of the cable is reasonable using the simplified
+assumptions.
+
+\begin{table}
+  \centering
+  \begin{tabular}{lll}
+    \hline    
+   & Hand Calculation &FEA \\
+   f1&	0.2381&	0.2375 \\
+    f2&	0.4125&	0.4102 \\
+    \hline
+  \end{tabular}
+  \caption{Comparison of hand calculation and FEA result.}
+\end{table}
 
 
 
