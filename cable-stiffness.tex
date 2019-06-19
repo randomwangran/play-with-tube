@@ -24,6 +24,7 @@
 \usepackage{setspace}
 \doublespacing
 \usepackage{palatino}
+\usepackage{rotating}
 %\usepackage{Georgia} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
 \usepackage[english]{babel} % English language/hyphenation
 \usepackage{amsmath,amsfonts,amsthm} % Math
@@ -270,7 +271,29 @@ assumptions.
   \caption{Comparison of hand calculation and FEA result.}
 \end{table}
 
+\newpage
+\begin{sidewaysfigure}
+\begin{verbatim}
+                              E I G E N V A L U E    O U T P U T     
 
+ MODE NO      EIGENVALUE              FREQUENCY         GENERALIZED MASS   COMPOSITE MODAL DAMPING            
+                             (RAD/TIME)   (CYCLES/TIME)
+
+
+       1*    -9.45461E-07     0.0000         0.0000         2.3422         0.0000    
+       2*    -7.89616E-08     0.0000         0.0000         2.6946         0.0000    
+       3       2.2268         1.4922        0.23750         2.6943         0.0000    
+       4       6.6446         2.5777        0.41025        0.90300         0.0000    
+       5       56216.         237.10         37.735         1.3560         0.0000    
+       6      2.86499E+05     535.26         85.189        0.69476         0.0000    
+       7      8.14360E+05     902.42         143.62         1.3805         0.0000    
+       8      2.00447E+06     1415.8         225.33        0.73256         0.0000    
+       9      2.41443E+06     1553.8         247.30        0.85643         0.0000    
+      10      2.60206E+06     1613.1         256.73        0.85578         0.0000    
+
+ ***NOTE: EIGENVALUES MARKED WITH A * APPEAR TO BE RIGID BODY MODES
+\end{verbatim}
+\end{sidewaysfigure}
 
 \end{document}
 
