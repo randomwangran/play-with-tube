@@ -129,8 +129,8 @@ of motion can be written as:
   \left[\begin{matrix}k&0\\0&k\\\end{matrix}\right]\left[\begin{matrix}u_1\\u_2\\\end{matrix}\right]=\left[\begin{matrix}0\\0\\\end{matrix}\right].\
 \end{align}
 
-The motion of the sytem for single degree-of-freedom is known as
-simple harmonic motion. By solving the above linear sytem, one can
+The motion of the system for single degree-of-freedom is known as
+simple harmonic motion. By solving the above linear system, one can
 determine the circular frequencies of the system:
 
 \begin{align}
@@ -156,7 +156,7 @@ Model parameters can be found in Table 1.1.
   \label{tab:cable-parameter}
 \end{table}
 
-Finally, the natral frequencies of the system are determined:
+Finally, the natural frequencies of the system are determined:
 
 \begin{align}
 \left[\begin{matrix}f_1\\f_2\\\end{matrix}\right]=\left[\begin{matrix}0.2381\\0.4125\\\end{matrix}\right]
@@ -196,68 +196,51 @@ model for its dynamic behavior(He, Fu, and Fu 2001).
 
 The dynamics responses of the system are decomposed by frequency and
 corresponding position. This kind of analysis can be verified from
-analytical solutions of partial differtial equation for some simple
-geometries. The mathematic fundation of this theory is based on that
-the response of of a linear system can be written as a series of
-harmonic movments. Mathematically speaking, any complicated function
-can be expressed in sets of sine or consine functions using Fourier
+analytical solutions of partial differential equation for some simple
+geometries. The mathematic foundation of this theory is based on that
+the response of a linear system can be written as a series of
+harmonic movements. Mathematically speaking, any complicated function
+can be expressed in sets of sine or cosine functions using Fourier
 transform. The concept of modal analysis is similar with that
 mathematic concept. The natural modes of a given system are determined
 once its physical properties such as mass, stiffness and damping and
 spatial distribution. The parameters such as natural frequency and
-moda shape are used to describe the system movment.
+mode shape are used to describe the system movement.
 
 Modal analysis includes both theoretical and experimental approaches.
 Besides the theoretical manipulations of equations, with the rapid
-progress of data acquisition technolgies, the modal testing is becoming
+progress of data acquisition technologies, the modal testing is becoming
 more and more popular to determine the natural frequency of a system.
 
-In this project, a commerical software Abaqus 6.14 is utilized to
-analyse modal response of the cable. The purpose of the simulation is
+In this project, a commercial software Abaqus 6.14 is utilized to
+analyze modal response of the cable. The purpose of the simulation is
 to compare hand calculations with numerical simulations. Once the
 validation is done, one can further investigate problems that are hard
 to calculate using analytical solution.
 
 Wilkinson and Wilkinson (1965) detailed the problems in his book. The
-reason why eigenvale problem is popular with finite element analysis
+reason why eigenvalue problem is popular with finite element analysis
 is that these problems involve large but narrowly banded matrices. The
-matrices of majority problems are symmetry. A typtical mathematical
+matrices of majority problems are symmetry. A typical mathematical
 description of the problem is:
 
 \begin{align}
 \left(\mu^2\left[M\right]+\mu\left[C\right]+\left[K\right]\right)\left\{\psi\right\}=0,
 \end{align}
 
-where $[M]$ is the mass matrix, which is symmetry and postive define;
+where $[M]$ is the mass matrix, which is symmetry and positive define;
 $[C]$ is the damping matrix; $[K]$ is the stiffness matrix, which may
-include large-displacment effects, and, therefore, may not always be
-positive definite or sysmmetry; $\mu$ is the eigenvalue;
-$\left\{\psi\right\}$ is the eigenvetor-the mode shape of motion;
-
-The eigensystem have complex eigenvalues and eigenvectors in general.
-The system can be symmetrized by assuming $[K]$ is symmetry and neglect
-damping matrix during analysis. For a symmetic eigenproblem, assuming
-$[K]$ is also positive semidefinite. In this case $\mu$ becomes an
-imaginery eigenvalue, $\mu=i\omega$, where $\omega$ is the circular
-frequey of the system, so the system can be rewriten as:
-
-\begin{align}
-\left(-\omega^2\left[M\right]+\left[k\right]\right)\left\{\psi\right\}=0.
-\end{align}
-
-Abaqus provides eignevalue extration procedures for above system. For
-symmetrized eigenvalue problems Abaqus offers two methods: Lanczos and
-subspace iteration methods.The solver using in this project is called
-Lanczos eigensolver. This kind of algorithem is powerful in extration
-of the extreme eigenvalues and the corresponding eigenvectors.
+include large-displacement effects, and, therefore, may not always be
+positive definite or symmetry; $\mu$ is the eigenvalue;
+$\left\{\psi\right\}$ is the eigenvector-the mode shape of motion.
 
 \subsection{FEM Modeling}
 \label{sec:fem-modeling}
 
 In the part, materials and sections models, the geometry and physical
 properties are defined. In the step setting, non-linear effect is
-ignored; Lanczos eigensolver is choosen. C3D8R element is used to
-discretize the whole system. Since the analytical solution is provided
+ignored; Lanczos eigensolver is chosen. C3D8R element is used to
+mesh the whole system. Since the analytical solution is provided
 in the previous discussion, there is no need to do mesh independent
 study. Boundary condtions are defined in such a way that it is very
 simlary to hand calculation. The cable is connected with two springs.
@@ -274,7 +257,7 @@ second modal shape from hand calculations.
 \subsection{FEA Results}
 \label{sec:fea-results}
 
-The simulaiton result is present in the Table 2.1 It shows that the two
+The simulation result is present in the Table 2.1 It shows that the two
 calculations agree with each other very well, thus the calculation of
 the natural frequency of the cable is reasonable using the simplified
 assumptions.
