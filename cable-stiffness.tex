@@ -158,6 +158,21 @@ Finally, the natral frequencies of the system are determined:
   Hz.\\
 \end{align}
 
+%% raw calculation
+% outer pi (D/2)^2 = 3.14 * (0.0889/2)^2 = 6.20401985e-3
+% inner pi (D/2)^2 = 3.14 * (0.0762/2)^2 = 4.5580554e-3
+
+% 2D Area = 6.20401985e-3 - 4.5580554e-3 = 1.64596445e-3
+
+% Volume  = 1.64596445e-3 * 1.4 = 2.30435023e-3 m^3
+
+% Mass    = 2.30435023e-3 * 1163 = 2.67995931749 kg
+
+% sqrt(2*3 / 2.68) = 1.49626400416
+
+% f = 1.49626400416 / (2 pi) =  1.49626400416 / (2*3.14) =
+% 0.238258599389 Hz
+
 It should be noted that modal shape corresponding to the fundamental
 frequency is that two ends of the cable segments moving
 simultaneously, whereas the second modal shape represents that two
@@ -295,6 +310,10 @@ assumptions.
 \end{verbatim}
 \end{sidewaysfigure}
 
+\section{Design VIV spring}
+\label{sec:design-viv-spring}
+
+The natural frequency 
 \end{document}
 
 %%% Local Variables:
